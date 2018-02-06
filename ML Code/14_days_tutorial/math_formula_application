@@ -1,0 +1,22 @@
+Math application to get value
+
+ x y 
+[0,0][1,1][3,4]
+
+MEAN (average)
+    mean = sum(x)/count(x) , sum(y)/count(y)
+              x   y 
+    mean = [1.33,1.66]
+
+VARIANCE
+    variance(x) = ( (0 - 1.33)^2 + (1 - 1.33)^2 + ... (x - µ)^2 ) / N
+
+STD (standard deviation)
+    std(x) = square( ( (0 - 1.33)^2 + (1 - 1.33)^2 + ... (x - µ)^2 ) / N)
+
+    µ = 0 +0 + 1+ 3
+    2.25  + 2.25 = 4.5 /2 = 2.25
+    std = square(2.25) = 1.5
+
+    normalize = (3 - 1.5) / 1.5
+
