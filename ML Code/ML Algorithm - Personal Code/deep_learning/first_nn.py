@@ -11,8 +11,6 @@ numpy.random.seed(7)
 
 # load pima indians dataset
 dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
-for item in dataset:
-    print item
 # split into input and output variables
 X = dataset[:,0:8]
 Y = dataset[:,8]
@@ -49,7 +47,7 @@ model.compile(loss= 'binary_crossentropy' ,
 #FIT MODEL 
 # We can also set the number of instances that are evaluated before
 # a weight update in the network is performed called the batch size
-model.fit(X, Y, epochs=150, batch_size=10)
+model.fit(X, Y, epochs=250, batch_size=10)
 
 #EVALUATE MODEL
 #on passe le train dataset dans l'evaluation
