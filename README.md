@@ -3,10 +3,10 @@ All my documents/codes/spreadsheets/e-books for ML
 
 ML CODE – 
 - Personnal Code of Algorithms
-- Non Linear Algorithms
-- Linear Algorithms
-- Ensemble Algorithms
-- Deep Learning Algorithms
+	- Non Linear Algorithms
+	- Linear Algorithms
+	- Ensemble Algorithms
+	- Deep Learning Algorithms
 - Jason Brownlee Code of Algorithms
 		
 ML Knownledges -
@@ -22,4 +22,5 @@ ML Knownledges -
 		- Ensemble Algorithms Personal Doc
 		- All Spreadsheets of Ensemble Algorithms				
 		- ML Unsupervised Learning
+	- Deep Learning
 - ML Unsupervised Learning
