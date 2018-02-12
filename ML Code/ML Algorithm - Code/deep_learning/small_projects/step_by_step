@@ -1,0 +1,16 @@
+
+1. Get the data
+2. Transformer la colonne Y 
+3. Transformer les inputs en float
+4. Standardiser les données
+5. Selectionner le nombre de hidden layer
+6. Selectionner le nombre de neurones pour chaque hidden layer
+7. Selectionner la loss fonction
+8. Selectionner les activation function
+9. Selectionner les init functions
+10. Selectionner le nombre d'epoch
+11. Selectionner la batch size
+12. Kfold le dataset pour le test
+13. Fit
+14. Evaluer
+15. Si machine performante (On peut faire un grid search)

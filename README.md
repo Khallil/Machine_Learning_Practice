@@ -2,12 +2,12 @@
 All my documents/codes/spreadsheets/e-books for ML
 
 ML CODE – 
-- Personnal Code of Algorithms
+- Basic tools
+- Code of Algorithms
 	- Non Linear Algorithms
 	- Linear Algorithms
 	- Ensemble Algorithms
 	- Deep Learning Algorithms
-- Jason Brownlee Code of Algorithms
 		
 ML Knownledges -
 - Ebooks
