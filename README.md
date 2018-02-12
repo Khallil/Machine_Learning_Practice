@@ -6,7 +6,9 @@ ML CODE –
 	- Non Linear Algorithms
 	- Linear Algorithms
 	- Ensemble Algorithms
-	- Deep Learning Algorithms
+	- Deep Learning
+		- Deep Learning Tutorials
+		- Small Projects
 - Jason Brownlee Code of Algorithms
 		
 ML Knownledges -
