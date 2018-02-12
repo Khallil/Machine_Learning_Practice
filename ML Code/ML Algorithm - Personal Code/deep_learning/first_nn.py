@@ -47,9 +47,23 @@ model.compile(loss= 'binary_crossentropy' ,
 #FIT MODEL 
 # We can also set the number of instances that are evaluated before
 # a weight update in the network is performed called the batch size
-model.fit(X, Y, epochs=250, batch_size=10)
+model.fit(X, Y, epochs=150, batch_size=10)
 
-#EVALUATE MODEL
-#on passe le train dataset dans l'evaluation
+# EVALUATE MODEL en PLUSIEURS PARTIES
+#1 . on passe le train dataset dans l'evaluation
+#Ici on évalue uniquement sur le train dataset
 scores = model.evaluate(X, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
+#2. En ajoutant validation_split=% 
+# pour garder un % du set pour la validation
+# ainsi on voit la loss et l'accu du validation set aussi
+#model.fit(X, Y, validation_split=0.33,epochs=150, batch_size=10)
+
+#3. Manuellement, avec validation data(x_set,y_set)
+#En supposant qu'on ai fait ce split :
+# X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=seed)
+#Ensuite dans la fonction fit
+# #model.fit(X, Y, validation_data=(X_test,y_test),epochs=150, batch_size=10)
+#Pareil que point 2, on voit la loss et accu du validatio set
+
