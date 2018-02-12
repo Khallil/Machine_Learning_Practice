@@ -7,14 +7,9 @@ ML CODE –
 	- Non Linear Algorithms
 	- Linear Algorithms
 	- Ensemble Algorithms
-<<<<<<< HEAD
-	- Deep Learning Algorithms
-=======
 	- Deep Learning
 		- Deep Learning Tutorials
 		- Small Projects
-- Jason Brownlee Code of Algorithms
->>>>>>> 5a0bec9b1045de8577235ed5c6401848c6707507
 		
 ML Knownledges -
 - Ebooks
