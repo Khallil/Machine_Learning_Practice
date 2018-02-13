@@ -10,7 +10,7 @@ import numpy
 numpy.random.seed(7)
 
 # load pima indians dataset
-dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
+dataset = numpy.loadtxt("../pima-indians-diabetes.csv", delimiter=",")
 # split into input and output variables
 X = dataset[:,0:8]
 Y = dataset[:,8]

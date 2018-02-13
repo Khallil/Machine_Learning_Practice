@@ -12,5 +12,7 @@
 11. Selectionner la batch size
 12. Kfold le dataset pour le test
 13. Fit
-14. Evaluer
-15. Si machine performante (On peut faire un grid search)
+14. Enregistrer un checkpoint des weight quand improve
+15. Evaluer
+16. Si machine performante (On peut faire un grid search)
+17. Visualiser l'historique 

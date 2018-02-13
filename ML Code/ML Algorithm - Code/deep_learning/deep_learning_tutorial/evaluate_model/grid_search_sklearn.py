@@ -21,7 +21,7 @@ def create_model(optimizer='rmsprop',init='glorot_uniform'):
 seed = 7
 numpy.random.seed(seed)
 
-dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
+dataset = numpy.loadtxt("../pima-indians-diabetes.csv", delimiter=",")
 X = dataset[:,0:8]
 Y = dataset[:,8]
 

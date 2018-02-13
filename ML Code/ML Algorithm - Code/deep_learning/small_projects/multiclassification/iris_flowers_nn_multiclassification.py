@@ -1,6 +1,10 @@
 #Khallil Doudou
 #-*- coding: utf-8 -*-
 
+# On encode la colonne Y our la multiple classification
+# On set la loss fonction loss='categorical_crossentropy'
+# On set l'actiation fonction de l'output model.add(Dense(3, activation='softmax'))
+
 import numpy
 from pandas import read_csv
 from keras.models import Sequential

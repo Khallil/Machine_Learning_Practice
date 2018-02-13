@@ -1,6 +1,10 @@
 #Khallil Doudou
-#-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*
 
+# Binary Classification
+# On change function loss : model.compile(loss='binary_crossentropy'
+# On change activation function de l'output : activation= ' sigmoid ' )
+# 
 import numpy
 from pandas import read_csv
 from keras.models import Sequential
@@ -16,7 +20,7 @@ from sklearn.pipeline import Pipeline
 def create_baseline():
     #create model
     model = Sequential()
-    model.add(Dense(30, input_dim=60,kernel_initializer='normal',activation='relu'))
+    model.add(Dense(60, input_dim=60,kernel_initializer='normal',activation='relu'))
     model.add(Dense(30, kernel_initializer='normal' , activation= 'relu' ))
     model.add(Dense(1, kernel_initializer='normal',activation='sigmoid'))
     #compile model
@@ -41,7 +45,7 @@ encoded_Y = encoder.transform(Y)
 # evaluate model with standardized dataset
 estimators = []
 estimators.append(( 'standardize' , StandardScaler()))
-estimators.append(( 'fit' , KerasClassifier(build_fn=create_baseline, epochs=100, batch_size=5,
+estimators.append(( 'fit' , KerasClassifier(build_fn=create_baseline, epochs=200, batch_size=5,
 verbose=0)))
 pipeline = Pipeline(estimators)
 kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=seed)
