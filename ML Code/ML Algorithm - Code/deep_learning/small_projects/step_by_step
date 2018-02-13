@@ -1,18 +1,20 @@
-
-1. Get the data
-2. Transformer la colonne Y 
-3. Transformer les inputs en float
-4. Standardiser les données
-5. Selectionner le nombre de hidden layer
-6. Selectionner le nombre de neurones pour chaque hidden layer
-7. Selectionner la loss fonction
-8. Selectionner les activation function
-9. Selectionner les init functions
-10. Selectionner le nombre d'epoch
-11. Selectionner la batch size
-12. Kfold le dataset pour le test
-13. Fit
-14. Enregistrer un checkpoint des weight quand improve
-15. Evaluer
-16. Si machine performante (On peut faire un grid search)
-17. Visualiser l'historique 
+ - Get the data
+ - Transformer la colonne Y 
+ - Transformer les inputs en float
+ - Standardiser les données. Selectionner le nombre de hidden layer
+ - Selectionner le nombre de neurones pour chaque hidden layer
+ - Selectionner la loss fonction
+ - Selectionner les activation function
+ - Selectionner les init functions
+ - Selectionner l'optimizer function
+    SGD optimizer
+        - Optisimier l'alpha
+ - Selectionner le nombre d'epoch
+ - Selectionner la batch size
+ -Kfold le dataset pour le test
+ - Fit
+ - Enregistrer un checkpoint des weight quand improve
+ - Evaluer
+    Si machine performante
+        - Faire un grid search)
+ - Visualiser l'historique 

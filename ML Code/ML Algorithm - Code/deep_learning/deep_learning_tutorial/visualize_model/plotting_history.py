@@ -20,7 +20,7 @@ dataset = numpy.loadtxt("../pima-indians-diabetes.csv", delimiter=",")
 X = dataset[:,0:8]
 Y = dataset[:,8]
 
-history = model.fit(X,Y,validation_split=0.33,epochs=150, batch_size=10, verbose=0)
+history = model.fit(X,Y,validation_split=0.33,epochs=300, batch_size=10, verbose=0)
 
 # summarize history for accuracy
 print(history.history.keys())
