@@ -1,6 +1,8 @@
 # Doudou Khallil
 
-# CNN digit_recognition from MNIST DATASET
+# Larger CNN digit_recognition from MNIST DATASET
+# On ajoute un couple ConvLayer,Pooling
+# On ajoute un Fully connected layer
 
 import numpy
 from keras.datasets import mnist
@@ -36,13 +38,21 @@ y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
 
 def baseline_model():
-    # 784-> 32C2D5x5-> 32Pool2x2-> Dropout0.2-> Flatten-> 128-> 10
+    # 784-> 32C2-> P2-> 15C2-> P2-> Drop0.2-> Flat-> 128-> 50 -> 10
     model = Sequential()
-    model.add(Conv2D(32,(5,5), input_shape=(1,28,28), activation='relu'))
+    model.add(Conv2D(30,(5,5), input_shape=(1,28,28), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2,2)))
+    
+    model.add(Conv2D(15,(3,3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2,2)))
+    
     model.add(Dropout(0.2))
+
     model.add(Flatten())
+    
     model.add(Dense(128, activation='relu'))
+    model.add(Dense(50, activation='relu'))    
+    
     model.add(Dense(num_classes, activation='softmax'))        
     model.compile(loss='categorical_crossentropy',optimizer='adam',
         metrics=['accuracy'])
