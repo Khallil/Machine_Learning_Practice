@@ -1,0 +1,20 @@
+ - Get the data
+ - Transformer la colonne Y 
+ - Transformer les inputs en float
+ - Standardiser les données. Selectionner le nombre de hidden layer
+ - Selectionner le nombre de neurones pour chaque hidden layer
+ - Selectionner la loss fonction
+ - Selectionner les activation function
+ - Selectionner les init functions
+ - Selectionner l'optimizer function
+    SGD optimizer
+        - Optisimier l'alpha
+ - Selectionner le nombre d'epoch
+ - Selectionner la batch size
+ -Kfold le dataset pour le test
+ - Fit
+ - Enregistrer un checkpoint des weight quand improve
+ - Evaluer
+    Si machine performante
+        - Faire un grid search)
+ - Visualiser l'historique 
