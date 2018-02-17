@@ -27,13 +27,21 @@ train = optimizer.minimize(loss)
 
 init = tf.global_variables_initializer()
 
-writer = tf.summary.FileWriter('.')
-writer.add_graph(tf.get_default_graph())
+#writer = tf.summary.FileWriter('.')
+#writer.add_graph(tf.get_default_graph())
+
+# Ici je suposse que 
+# train appelle loss
+# loss apelle y_pred
+# les variables de y_pred sont update
+# tout ça automatiquement
 
 sess = tf.Session()
 sess.run(init)
-for i in range(300):
-    _, loss_value = sess.run((train,loss))
-    print(loss_value)
+for i in range(50):
+    sess.run(train)
+    #print(sess.run(loss))
+    #_, loss_value = sess.run((train,loss))
+    #print(loss_value)
 
 print(sess.run(y_pred))
