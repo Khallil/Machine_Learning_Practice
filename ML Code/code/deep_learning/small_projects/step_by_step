@@ -11,7 +11,7 @@
         - Optisimier l'alpha
  - Selectionner le nombre d'epoch
  - Selectionner la batch size
- -Kfold le dataset pour le test
+ - Kfold le dataset pour le test
  - Fit
  - Enregistrer un checkpoint des weight quand improve
  - Evaluer

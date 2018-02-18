@@ -1,12 +1,22 @@
 
 For today ! 
 
+CustomEstimator
+ - Standardiser les données 
+ - Selectionner les init functions
+ - Kfold le dataset pour le test
+ - Enregistrer un checkpoint des weight quand improve 
+ - Faire un grid search) 
+
+
+Next -> 
+
 Saving and Restoring Variables
 https://www.tensorflow.org/programmers_guide/saved_model
 
 Using GPU
 https://www.tensorflow.org/programmers_guide/using_gpu
 
-Create Custom Deep Neural Network with tensorflow
-https://www.tensorflow.org/get_started/custom_estimators
-
+Ecrire une programme qui lance un training sur CPU,GPU1,GPU2
+    - Et faire une comparaison des performances en disant à la fin
+        quelle est la méthode qu'il faut utiliser
