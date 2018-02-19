@@ -1,18 +1,15 @@
 
 For today ! 
 
-CustomEstimator
- - Récuperer un checkpoint et retrain dessus
- - Faire un grid search
-
-Next -> 
-
-Saving and Restoring Variables
-https://www.tensorflow.org/programmers_guide/saved_model
-
 Using GPU
 https://www.tensorflow.org/programmers_guide/using_gpu
 
-Ecrire une programme qui lance un training sur CPU,GPU1,GPU2
-    - Et faire une comparaison des performances en disant à la fin
-        quelle est la méthode qu'il faut utiliser
+(optional)Ecrire une programme qui lance un training sur CPU,GPU1,GPU2
+            - Et faire une comparaison des performances en disant à la fin
+              quelle est la méthode qu'il faut utiliser
+
+Tester ça sur Amazon EC2
+
+Next -> 
+
+

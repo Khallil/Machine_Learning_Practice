@@ -17,12 +17,11 @@
  - Selectionner le nombre d'epoch -> main() l-149
  - Selectionner la batch size -> main() l-148
  - Fit -> main() l-147
- - Enregistrer un checkpoint des weight quand improve -> A TROUVER
+ - Load un checkpoint des weight dans les layers -> main() l-157
  - Evaluer -> main() l-152
     Si machine performante
         - Faire un grid search) -> A TROUVER
  - Visualiser l'historique -> TensorBoard
 
  A TROUVER : 
- - Enregistrer un checkpoint des weight quand improve 
  - Faire un grid search) 

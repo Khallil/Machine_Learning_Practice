@@ -20,13 +20,14 @@ CSV_COLUMN_NAMES = ['SepalLength', 'SepalWidth',
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-b', default=50, type=int, help='batch size')
-parser.add_argument('-e', default=100, type=int,
+parser.add_argument('-e', default=50, type=int,
                     help='number of training steps')
 
 # download_data()
     #1 On récupère les DATA dans 2 csv, train et test
 # load_data()
     #1 On load les data dans 4 list (train_x,train_y,test_x,test_y)
+    #2 On standardize les data
 # get_iterator_from_data()
     #1 Converti le dataset en tf.Dataset
     #2 Retourne iterator de batches du tf.Dataset
@@ -94,10 +95,11 @@ def my_model(features, labels, mode, params):
     for units in params['hidden_units']:
         net = tf.layers.dense(net, units=units, activation=tf.nn.relu,kernel_initializer=tf.glorot_uniform_initializer())   # activation fonction = Relu
 
+    ''' To init layers with checkpoint data
     assignment_map = {
         'net/': 'net/',
     }
-    
+    tf.train.init_from_checkpoint('model_info', assignment_map)'''
     # Compute logits (1 per class).
     logits = tf.layers.dense(net, params['n_classes'], activation=None) # aucun activation fonction
 
@@ -145,13 +147,15 @@ def main(argv):
         my_feature_columns.append(tf.feature_column.numeric_column(key=key))
 
     my_checkpointing_config = tf.estimator.RunConfig(
-        save_checkpoints_secs = 1*60,  # Save checkpoints every 20 minutes.
-        keep_checkpoint_max = 1,       # Retain the 1 most recent checkpoints.
+        #save_checkpoints_secs = 1*60,  # Save checkpoints every 20 minutes.
+        keep_checkpoint_max = 0,       # Retain the 1 most recent checkpoints.
+        log_step_count_steps=50,
+        save_checkpoints_steps=200,
     )
 
     classifier = tf.estimator.Estimator(
         model_fn=my_model,
-        model_dir='model_info',
+        #model_dir='model_info',
         config=my_checkpointing_config,
         params={
             'feature_columns': my_feature_columns,
@@ -160,7 +164,7 @@ def main(argv):
         }
     )
     # Train the Model.
-    classifier.train.latest_checkpoint(
+    classifier.train(
         input_fn=lambda:get_iterator_from_data(train_x, train_y, args.b),
         steps=args.e)   
     
@@ -169,6 +173,18 @@ def main(argv):
         input_fn=lambda:get_dataset_from_data(test_x, test_y, args.b))
 
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
+
+    # Train the Model.
+    classifier.train(
+        input_fn=lambda:get_iterator_from_data(train_x, train_y, args.b),
+        steps=args.e)   
+    
+     # Evaluate the model.
+    eval_result = classifier.evaluate(
+        input_fn=lambda:get_dataset_from_data(test_x, test_y, args.b))
+
+    print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
+
     end = time.time()
     print(end - start)
 
