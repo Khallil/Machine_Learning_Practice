@@ -4,19 +4,18 @@
  - Get the data -> download_data() l-53
  - Transformer la colonne Y -> load_data() l-64,67
  - Transformer les inputs en float -> get_..._from_data() l-73,80
- - Standardiser les données -> A TROUVER
+ - Standardiser les données -> load_data() l-74
  - Selectionner le nombre de hidden layer -> main() l-142
  - Selectionner le n de neurones pour hidden layer -> main() l-142
  - Selectionner la loss fonction -> my_model() l-107
  - Selectionner Activation F pour les hidden ls-> my_model() l-91
  - Selectionner Activation F pour l'output l-> my_model() l-94
- - Selectionner les init functions -> A TROUVER
+ - Selectionner les init functions -> my_model() l-91
  - Selectionner l'optimizer function -> my_model() l-122
     SGD optimizer
         - Optisimier l'alpha
  - Selectionner le nombre d'epoch -> main() l-149
  - Selectionner la batch size -> main() l-148
- - Kfold le dataset pour le test -> A TROUVER
  - Fit -> main() l-147
  - Enregistrer un checkpoint des weight quand improve -> A TROUVER
  - Evaluer -> main() l-152
@@ -25,8 +24,5 @@
  - Visualiser l'historique -> TensorBoard
 
  A TROUVER : 
- - Standardiser les données 
- - Selectionner les init functions
- - Kfold le dataset pour le test
  - Enregistrer un checkpoint des weight quand improve 
  - Faire un grid search) 

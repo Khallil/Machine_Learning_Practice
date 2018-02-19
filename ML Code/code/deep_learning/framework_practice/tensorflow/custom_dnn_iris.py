@@ -11,7 +11,7 @@ import numpy as np
 import tensorflow as tf
 import pandas as pd
 import argparse
-
+import time
 
 TRAIN_URL = "http://download.tensorflow.org/data/iris_training.csv"
 TEST_URL = "http://download.tensorflow.org/data/iris_test.csv"
@@ -19,8 +19,8 @@ CSV_COLUMN_NAMES = ['SepalLength', 'SepalWidth',
                     'PetalLength', 'PetalWidth', 'Species']
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-b', default=100, type=int, help='batch size')
-parser.add_argument('-e', default=1000, type=int,
+parser.add_argument('-b', default=50, type=int, help='batch size')
+parser.add_argument('-e', default=100, type=int,
                     help='number of training steps')
 
 # download_data()
@@ -57,15 +57,19 @@ def download_data():
     
     return train_path, test_path
 
+def standardize_data(train_x,test_x):
+    train_x = (train_x - train_x.min()) / (train_x.max() - train_x.min())
+    test_x = (test_x - test_x.min()) / (test_x.max() - test_x.min())
+    return train_x,test_x
+
 def load_data(y_name='Species'):
     train_path, test_path = download_data()
-
     # header = 0 : row 0 est la row des names, après on précise avec names=
     train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
     train_x, train_y = train, train.pop(y_name)
-
     test = pd.read_csv(test_path, names=CSV_COLUMN_NAMES, header=0)
     test_x, test_y = test, test.pop(y_name)
+    train_x,test_x = standardize_data(train_x,test_x)
     return (train_x, train_y), (test_x, test_y)
 
 # On crée un dataset avec les features et label et batch_size
@@ -88,8 +92,12 @@ def my_model(features, labels, mode, params):
 
     # Build the hidden layers, sized according to the 'hidden_units' param.
     for units in params['hidden_units']:
-        net = tf.layers.dense(net, units=units, activation=tf.nn.relu)   # activation fonction = Relu
+        net = tf.layers.dense(net, units=units, activation=tf.nn.relu,kernel_initializer=tf.glorot_uniform_initializer())   # activation fonction = Relu
 
+    assignment_map = {
+        'net/': 'net/',
+    }
+    
     # Compute logits (1 per class).
     logits = tf.layers.dense(net, params['n_classes'], activation=None) # aucun activation fonction
 
@@ -126,6 +134,7 @@ def my_model(features, labels, mode, params):
 
 
 def main(argv):
+    start = time.time()
     args = parser.parse_args(argv[1:])
 
     (train_x,train_y), (test_x, test_y) = load_data()
@@ -135,8 +144,15 @@ def main(argv):
     for key in train_x.keys():
         my_feature_columns.append(tf.feature_column.numeric_column(key=key))
 
+    my_checkpointing_config = tf.estimator.RunConfig(
+        save_checkpoints_secs = 1*60,  # Save checkpoints every 20 minutes.
+        keep_checkpoint_max = 1,       # Retain the 1 most recent checkpoints.
+    )
+
     classifier = tf.estimator.Estimator(
         model_fn=my_model,
+        model_dir='model_info',
+        config=my_checkpointing_config,
         params={
             'feature_columns': my_feature_columns,
             'hidden_units': [10, 10],
@@ -144,15 +160,18 @@ def main(argv):
         }
     )
     # Train the Model.
-    classifier.train(
+    classifier.train.latest_checkpoint(
         input_fn=lambda:get_iterator_from_data(train_x, train_y, args.b),
-        steps=args.e)
+        steps=args.e)   
     
     # Evaluate the model.
     eval_result = classifier.evaluate(
         input_fn=lambda:get_dataset_from_data(test_x, test_y, args.b))
-    
+
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
+    end = time.time()
+    print(end - start)
 
 if __name__ == '__main__':
+    tf.logging.set_verbosity(tf.logging.INFO)
     tf.app.run(main)

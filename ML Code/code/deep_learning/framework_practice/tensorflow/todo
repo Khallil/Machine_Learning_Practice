@@ -2,12 +2,8 @@
 For today ! 
 
 CustomEstimator
- - Standardiser les données 
- - Selectionner les init functions
- - Kfold le dataset pour le test
- - Enregistrer un checkpoint des weight quand improve 
- - Faire un grid search) 
-
+ - Récuperer un checkpoint et retrain dessus
+ - Faire un grid search
 
 Next -> 
 
