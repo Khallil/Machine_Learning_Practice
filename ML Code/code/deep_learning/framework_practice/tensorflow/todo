@@ -8,7 +8,7 @@ https://www.tensorflow.org/programmers_guide/using_gpu
             - Et faire une comparaison des performances en disant à la fin
               quelle est la méthode qu'il faut utiliser
 
-Tester ça sur Amazon EC2
+Tester ça sur Google ML Cloud
 
 Next -> 
 

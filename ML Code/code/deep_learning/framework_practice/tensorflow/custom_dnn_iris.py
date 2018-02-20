@@ -36,7 +36,7 @@ parser.add_argument('-e', default=50, type=int,
     #2 Retourne un dataset batché
 # my_model()
     #1 On crée l'INPUT LAYER en ajoutant features dans features_column 
-    #2 On crée les HIDDEN LAYERS et définie leurs paramères
+    #2 On crée les HIDDEN LAYERS et définie leurs paramètres
     #3 On crée l'OUTPUT LAYER en passant le nombres de classes
     #4 On définie le mode PREDICTION
     #5 On définie le mode EVALUATE
