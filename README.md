@@ -3,17 +3,19 @@ All my documents/codes/spreadsheets/e-books for ML
 
 ML CODE – 
 - Basic tools
-- Code of Algorithms
+- General Machine Learning
 	- Non Linear Algorithms
 	- Linear Algorithms
 	- Ensemble Algorithms
-	- Deep Learning
-		- Deep Learning Tutorials
+- Deep Learning
+	- Deep Learning Tutorials
+	- Small Projects
+	- NLP
+		- NLP Tutorials
 		- Small Projects
-		- NLP
-			- NLP Tutorials
-			- Small Projects
 		
+
+
 ML Knownledges -
 - Ebooks
 - ML Supervised Learning
@@ -28,4 +30,5 @@ ML Knownledges -
 		- All Spreadsheets of Ensemble Algorithms				
 		- ML Unsupervised Learning
 	- Deep Learning
+		- Concepts Descriptions
 - ML Unsupervised Learning
