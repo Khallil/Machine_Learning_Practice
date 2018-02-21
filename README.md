@@ -10,6 +10,9 @@ ML CODE –
 	- Deep Learning
 		- Deep Learning Tutorials
 		- Small Projects
+		- NLP
+			- NLP Tutorials
+			- Small Projects
 		
 ML Knownledges -
 - Ebooks
