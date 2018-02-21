@@ -1,4 +1,4 @@
- - Get the data
+ - Load the data
  - Transformer la colonne Y 
  - Transformer les inputs en float
  - Standardiser les données. Selectionner le nombre de hidden layer

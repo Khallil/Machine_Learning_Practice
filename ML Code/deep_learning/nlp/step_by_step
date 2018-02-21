@@ -1,0 +1,10 @@
+- Load the data (List of files with one sentence in each of it)
+- Split text into words
+- Clean the words list (depends on which text we get)
+- Create a vocabulary with Counter()
+- Reload the data
+- Clean text with the vocabulary (if in voca then append to)
+- List of lines
+- Associate a label for each of the lines
+- Split the list of lines into train and test set
+- Encode the line
