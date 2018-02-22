@@ -33,6 +33,7 @@ dataframe = read_csv("iris.csv", header=None)
 dataset = dataframe.values
 X = dataset[:,0:4].astype(float)
 Y = dataset[:,4]
+print Y
 
 # encode class values as integers
 encoder = LabelEncoder()
@@ -40,10 +41,12 @@ encoder.fit(Y)
 encoded_Y = encoder.transform(Y)
 # convert integers to dummy variables (i.e. one hot encoded)
 dummy_y = np_utils.to_categorical(encoded_Y)
+print dummy_y
+
 
 # fit le model
-estimator = KerasClassifier(build_fn=baseline_model,epochs=200,batch_size=5, verbose=0)
+#estimator = KerasClassifier(build_fn=baseline_model,epochs=200,batch_size=5, verbose=0)
 
-kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
-results = cross_val_score(estimator, X, dummy_y, cv=kfold)
-print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
+#kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
+#results = cross_val_score(estimator, X, dummy_y, cv=kfold)
+#print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))

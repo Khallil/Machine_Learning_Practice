@@ -67,13 +67,12 @@ def process_docs(directory, vocab, is_train):
 # load and clean a dataset
 def load_clean_dataset(vocab, is_train):
 	# load documents
-	neg = process_docs('txt_sentoken/neg', vocab, is_train)
-	pos = process_docs('txt_sentoken/pos', vocab, is_train)
+	neg = process_docs('/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/txt_sentoken/neg', vocab, is_train)
+	pos = process_docs('/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/txt_sentoken/pos', vocab, is_train)
 	docs = neg + pos
 	# prepare labels
 	labels = [0 for _ in range(len(neg))] + [1 for _ in range(len(pos))]
 	return docs, labels
-
 # define the model
 def define_model(n_words):
 	# define network
@@ -113,13 +112,16 @@ def prepare_data(train_docs, test_docs, mode):
 	return np.array(Xtrain), np.array(Xtest)
 
 # load the vocabulary
-vocab_filename = 'vocab.txt'
+vocab_filename = '/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/vocab.txt'
 vocab = load_doc(vocab_filename)
 vocab = set(vocab.split())
 # load all reviews
 train_docs, ytrain = load_clean_dataset(vocab, True)
 test_docs, ytest = load_clean_dataset(vocab, False)
+print train_docs[:1]
+print ytrain[:1]
 ytrain = np.array(ytrain)
+print ytrain.shape
 ytest = np.array(ytest)
 # run experiment
 modes = ['binary', 'count', 'tfidf', 'freq']
@@ -127,8 +129,10 @@ results = DataFrame()
 for mode in modes:
 	# prepare data for mode
 	Xtrain, Xtest = prepare_data(train_docs, test_docs, mode)
+	print Xtrain[:1]
+	print Xtrain.shape
 	# evaluate model on data for mode
-	results[mode] = evaluate_mode(Xtrain, ytrain, Xtest, ytest)
+	#results[mode] = evaluate_mode(Xtrain, ytrain, Xtest, ytest)
 # summarize results
 print(results.describe())
 # plot results

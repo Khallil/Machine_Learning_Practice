@@ -1,3 +1,4 @@
+
 - Load the data (List of files with one sentence in each of it)
 - Split text into words
 - Clean the words list (depends on which text we get)

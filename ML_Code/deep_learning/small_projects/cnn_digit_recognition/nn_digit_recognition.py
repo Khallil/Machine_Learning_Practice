@@ -30,10 +30,6 @@ y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
 
-print y_train
-print y_test
-print num_classes
-
 
 def baseline_model():
     # 784 -> 784 -> 10
@@ -49,7 +45,7 @@ def baseline_model():
     return model
 
 model = baseline_model()
-model.fit(X_train,y_train,validation_data=(X_test, y_test), epochs=10,
+model.fit(X_train,y_train,validation_data=(X_test, y_test), epochs=1,
     batch_size=200,verbose=2)
 
 scores = model.evaluate(X_test, y_test, verbose=0)
