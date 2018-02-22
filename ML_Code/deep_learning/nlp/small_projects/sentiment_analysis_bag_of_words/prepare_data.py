@@ -47,29 +47,21 @@ def save_list(lines,filename):
     file.write(data)
     file.close()
 
-vocab_pos = Counter()
-vocab_neg = Counter()
+
+vocab = Counter()
 # specify directory to load
-process_docs('txt_sentoken/neg',vocab_neg)
-process_docs('txt_sentoken/pos',vocab_pos)
-#print(len(vocab_pos))
-#print(vocab_pos.most_common(50))
+process_docs('txt_sentoken/neg',vocab)
+process_docs('txt_sentoken/pos',vocab)
+#print(len(vocab))
+#print(vocab.most_common(50))
 # The counter is mainly here to help us manipulate
 # the big vocabulary we get, see the reduction below for example
 
 # keep tokens with > 5 occurrence
-min_occurane = 5
-tokens = [k for k,c in vocab_pos.items() if c >= min_occurane]
-save_list(tokens, 'positive.txt')
-
-tokens = [k for k,c in vocab_neg.items() if c >= min_occurane]
-save_list(tokens, 'negative.txt')
+min_occurane = 2
+tokens = [k for k,c in vocab.items() if c >= min_occurane]
+print len(tokens)
+save_list(tokens, 'vocab.txt')
 
 # ici on save tout pos+neg dans le meme vocab
-
-# If we want to load the vocabulary
-vocab_filename = 'negative.txt'
-vocab_neg = load_doc(vocab_filename)
-vocab_neg = vocab_neg.split()
-vocab_neg = set(vocab_neg)
 

@@ -13,8 +13,6 @@ ML CODE –
 	- NLP
 		- NLP Tutorials
 		- Small Projects
-		
-
 
 ML Knownledges -
 - Ebooks

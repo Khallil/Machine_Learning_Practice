@@ -1,0 +1,18 @@
+- Load the data (List of files with one sentence in each of it)
+- Split text into words
+- Clean the words list (depends on which text we get)
+- Create a vocabulary with Counter()
+- Reload the data
+- Clean text with the vocabulary (if in voca then append to)
+- List of lines
+- Associate a label for each of the lines
+- Split the list of lines into train and test set
+- Create a Tokenizer and fit it to create the bag of words
+- Encode Train and Test to matrixes with the Tokenizer
+- Input the number of vocabulary words in input layer
+- Passe Each matrixes and labels into the Neural network
+- Train the neural network
+- Compare scores of the different encoding of Tokenizer (binary,count,tfidf,freq)
+- See the best mode with the plot or with the terminal output
+- Run prediction on new text by using the trained model
+- Don't forget to get the percentage predicted by the model
