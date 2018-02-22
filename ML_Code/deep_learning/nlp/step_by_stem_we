@@ -1,0 +1,33 @@
+Choice to make -
+    1 - Y/N :  Do I use a standalone word embedding model -
+    or do I use a jointly model from my dataset ?
+        1Y - Y/N : Do I create a standalone word embedding model or do I load one ?
+    
+    2 - Do I keep the word embedding model unchanged or do I update it with my dataset ?
+
+1Y - Y
+- Load the data (List of files with one sentence in each of it)
+- Split text into words
+- Clean the words list
+    - Remove Punctuation
+    - Convert all words to lowercase
+    - Remove the number (depends on the case)
+- Create a vocabulary with Counter()
+- Reload the data
+- Clean text with the vocabulary (if in voca then append to)
+- List of lines
+- Split in each lines into words
+- Create an array of words for each lines
+- Train the Word Embedding Model (Word2Vec)
+
+1Y - N 
+- Load Word2Vec or GloVe (load_glove.py/load_word2vec.py)
+
+1N -
+- Same step as 1Y - Y until List of lines
+- Encode the line with one hot (hashing)
+- Padd the encoded docs to a smaller vector
+- Pass the padded docs to the Embedding Layer
+- Flat the output of Embedding Layer
+- Pass the output of Flat to the Dense Output Layer
+- Predict
