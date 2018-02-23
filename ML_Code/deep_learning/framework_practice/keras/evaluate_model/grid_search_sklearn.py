@@ -32,6 +32,8 @@ epochs = [1,2]
 batches = [5,10]
 param_grid = dict(optimizer=optimizers,epochs=epochs,batch_size=batches,init=inits)
 grid = GridSearchCV(estimator=model, param_grid=param_grid)
+print X.shape
+print Y.shape
 grid_result = grid.fit(X,Y)
 
 print("Best: %f using %s" % (grid_result.best_score_,grid_result.best_params_))

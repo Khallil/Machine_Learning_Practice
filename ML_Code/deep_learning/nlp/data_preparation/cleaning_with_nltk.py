@@ -1,4 +1,4 @@
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize,sent_tokenize
 
 # load text
 filename = 'metamorphosis_clean.txt'
@@ -19,7 +19,7 @@ from nltk.corpus import stopwords
 # enleve les "a","is","to"
 # Attention utilise uniquement pour classer des documents
 # Difficile de comprendre le sens sans ces mots
-stop_words = stopwords.words( ' english ' )
+stop_words = stopwords.words('english')
 
 from nltk.stem.porter import PorterStemmer
 # Raccourci les mots à leurs sources example : fishing -> fish
