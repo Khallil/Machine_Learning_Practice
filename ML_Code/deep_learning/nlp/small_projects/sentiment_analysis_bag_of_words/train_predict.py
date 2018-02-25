@@ -61,8 +61,8 @@ def process_docs(directory, vocab):
 # load and clean a dataset
 def load_clean_dataset(vocab):
 	# load documents
-	neg = process_docs('txt_sentoken/neg', vocab)
-	pos = process_docs('txt_sentoken/pos', vocab)
+	neg = process_docs('/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/txt_sentoken/neg', vocab)
+	pos = process_docs('/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/txt_sentoken/pos', vocab)
 	docs = neg + pos
 	# prepare labels
 	labels = [0 for _ in range(len(neg))] + [1 for _ in range(len(pos))]
@@ -95,10 +95,12 @@ def predict_sentiment(review, vocab, tokenizer, model):
 	tokens = [w for w in tokens if w in vocab]
 	# convert to line
 	line = ' '.join(tokens)
+	print line
 	# encode
 	encoded = tokenizer.texts_to_matrix([line], mode='binary')
 	# predict sentiment
 	yhat = model.predict(encoded, verbose=0)
+	print yhat
 	# retrieve predicted percentage and label
 	percent_pos = yhat[0,0]
 	if round(percent_pos) == 0:
@@ -106,7 +108,7 @@ def predict_sentiment(review, vocab, tokenizer, model):
 	return percent_pos, 'POSITIVE'
 
 # load the vocabulary
-vocab_filename = 'vocab.txt'
+vocab_filename = '/home/doudou/Documents/IA/ML_Code/deep_learning/nlp/small_projects/vocab.txt'
 vocab = load_doc(vocab_filename)
 vocab = set(vocab.split())
 # load all reviews
@@ -126,7 +128,7 @@ Xtest = np.array(Xtest)
 n_words = Xtrain.shape[1]
 model = define_model(n_words)
 # fit network
-model.fit(Xtrain, ytrain, epochs=10, verbose=2)
+model.fit(Xtrain, ytrain, epochs=1, verbose=2)
 # test positive text
 text = 'Everyone will enjoy this film. I love it, recommended!'
 percent, sentiment = predict_sentiment(text, vocab, tokenizer, model)

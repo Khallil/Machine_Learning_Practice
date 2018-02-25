@@ -42,8 +42,9 @@ def doc_to_line(filename, vocab):
 	doc = load_doc(filename)
 	# clean doc
 	tokens = clean_doc(doc)
-	# filter by vocab
 	tokens = [w for w in tokens if w in vocab]
+	
+	# filter by vocab
 	return ' '.join(tokens)
 
 # load all docs in a directory
