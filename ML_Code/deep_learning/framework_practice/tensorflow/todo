@@ -1,15 +1,16 @@
 
-For today ! 
+# Comprendre comment formater les data de la Sequence Example pour un réseau de neurones basique
 
-Using GPU
+# Comprendre comment formater les data de la Sequence Example pour 
+
+# Using GPU
 https://www.tensorflow.org/programmers_guide/using_gpu
 
 (optional)Ecrire une programme qui lance un training sur CPU,GPU1,GPU2
             - Et faire une comparaison des performances en disant à la fin
               quelle est la méthode qu'il faut utiliser
 
-Tester ça sur Google ML Cloud
+# Tester les trucs de GPU sur Google ML Cloud
 
-Next -> 
 
 

@@ -18,7 +18,6 @@ c = tf.matmul(a, b)
 #sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 # Runs the op.
 #print(sess.run(c))
-
 from tensorflow.python.client import device_lib
 
 def get_available_gpus():
@@ -26,4 +25,4 @@ def get_available_gpus():
     return [x.name for x in local_device_protos]
 
 names = get_available_gpus()
-print names
+print names #[u'/device:CPU:0'] , sur EliteBook j'ai qu'un CPU :(
