@@ -1,7 +1,7 @@
-
+﻿
 - A quoi sert le LSTM ?
 
-    Le LSTM fils du RNN sert a prédire des données sur le temps,
+    Le LSTM prolongement du RNN sert a prédire des données sur le temps,
     mais contrairement au RNN elle peut remonter beaucoup plus loin 
     grâce a plusieurs portes (plus d'info dans Deep Learning Concept.doc)
 
@@ -22,11 +22,24 @@
     donc uniquement le nouvel input X passe a travers les gates.
     
     Cependant on peut modifier ce comportement avec 2 techniques :
-    1. State Maintened, il sagit de garder les valeurs de la cell state durant toute une epoch ou moins
+    1. State Maintened, il sagit de garder les valeurs de la cell state durant toute la batch_size,
+    et de faire la mise à jour des poids uniquement a la fin de la batch_size
     2. Stateful, c'est comme le State Maintened il sagit de préserver toute la séquence d'input 
-    comme State Maintened, sans avoir besoin de choisir la taille du batch_size
+    comme State Maintened, sauf qu'il reste indépendant par rapport à la batch_size
     Il permet contrairement à State Maintened de garder la cell state intact
-    pour l'evaluation et la prédiction
+    pour l'evaluation et la prédiction, mais aussi de mettre à jour les poids a chaque fin de batch_size
+
+- Quand utiliser le Stateful ou pas, et comment ?
+    - A prediction is made at the end of each sequence and sequences are independent. State
+    should be reset after each sequence by setting the batch size to 1.
+    - A long sequence was split into multiple subsequences (many samples each with many time
+    steps). State should be reset after the network has been exposed to the entire sequence by
+    making the LSTM stateful, turning off the shuffling of subsequences, and resetting the
+    state after each epoch.
+    - A very long sequence was split into multiple subsequences (many samples each with many
+    time steps). Training efficiency is more important than the influence of long-term internal
+    state and a batch size of 128 samples was used, after which network weights are updated
+    and state reset.
 
 - Quels adaptations faut-il fait pour chacune de ses techniques ?
     
@@ -39,3 +52,16 @@
     de "comprendre" toute la séquence intrinsèque entre les input
 
 - Quels sont les différents types de LSTM ?
+
+- Comment entrainer un LSTM ?
+    Forward and Backpropagation, seulement il y a 2 types de BP
+    - Back Propagation Through Time, il sagit pour chaque
+    etape de temps, de passer tous la sequence d'input dans le réseau
+    (forward), puis avec les outputs de dérouler le réseau (déboucler),
+    et de calculer et d'accumuler les erreurs pour chaque étapes de temps
+    du réseau
+    - Truncated Back Propagration Through Time:
+    Comme le BPTT seulement cette fois, on choisi le nombre d'étapes de temps
+    qui va servir a obtenir l'output, puis on déroule le réseau, sauf que on
+    choisi le nombre d'étape de temps qui vont servir a calculer et 
+    accumuler les erreurs
