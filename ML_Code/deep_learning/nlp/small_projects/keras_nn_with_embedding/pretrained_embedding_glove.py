@@ -6,6 +6,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers import Embedding
+
 # define documents
 docs = ['Well done!',
 		'Good work',

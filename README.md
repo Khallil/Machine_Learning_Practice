@@ -8,11 +8,16 @@ ML CODE –
 	- Linear Algorithms
 	- Ensemble Algorithms
 - Deep Learning
-	- Deep Learning Tutorials
-	- Small Projects
+	- Deep Learning
+	- Projects
+		- Multilayer Perceptron
+		- CNN
+		- RNN
 	- NLP
-		- NLP Tutorials
-		- Small Projects
+		- Data Preparation
+		- Projects
+			- CNN + Embedding
+			- NN + Bag of Words/Embedding
 
 ML Knownledges -
 - Ebooks
@@ -26,7 +31,6 @@ ML Knownledges -
 	- Ensemble Algorithms
 		- Ensemble Algorithms Personal Doc
 		- All Spreadsheets of Ensemble Algorithms				
-		- ML Unsupervised Learning
 	- Deep Learning
 		- Concepts Descriptions
 - ML Unsupervised Learning
