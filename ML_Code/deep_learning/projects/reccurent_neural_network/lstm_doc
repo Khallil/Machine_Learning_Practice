@@ -3,7 +3,9 @@
 
     Le LSTM prolongement du RNN sert a prédire des données sur le temps,
     mais contrairement au RNN elle peut remonter beaucoup plus loin 
-    grâce a plusieurs portes (plus d'info dans Deep Learning Concept.doc)
+    grâce a plusieurs portes, elle permet aussi de comprendre la 
+    logique dans l'évolution d'une très longue séquence
+    (plus d'info dans Deep Learning Concept.doc)
 
 - Comment format les données pour l'utiliser ?
 
@@ -51,9 +53,39 @@
     Et finalement ne pas shuffle le dataset puisque le but ici est 
     de "comprendre" toute la séquence intrinsèque entre les input
 
-- Quels sont les différents types de LSTM ?
+- Quels sont les différents types de LSTM ? Voir Partie 3 de LSTM pour les examples
+    - Vanilla LSTM:
+        Classique LSTM qui permet d'apprendre une sequence simple
+    - Stacked LSTM:
+        L'idée est de stacké des LSTM pour comprendre la tendance de developpement 
+        d'une série, exemple sinusoidale regressive. On peut utilise une technique
+        qu'on va appeler focus_on_syntax
+        qui est d'utiliser n series différentes avec la meme tendance et apprendre
+        au lstm en passant chacun de ses series avec une seul epoch, batch_size x
+        pour reset le state tous les x series
+    - CNN LSTM : 
+        L'idée est de combiner CNN qui comprendre les relations spatiales d'une image
+        ou autre, avec le LSTM qui va se charger de comprendre la tendance d'évolution
+        de cette espace, le CNN va quelque part préformater les données pour rendre
+        la tache plus simple au LSTM, on utilise la technique focus_on_syntax
+    - Encoder/Decoder LSTM :
+        L'idée est de pouvoir gérer les cas où l'input et l'ouput sont des séquences
+        à taille variables, mais aussi de taille variables pour entre les samples
+        Pour cela on doit encoder les inputs(padding/truncate -> char to int to onehot
+        et decoder les output argmax -> int to char -> invert padding/truncate
+        On utilise la technique focus_on_syntax
+    - Bidirectionnal LSTM :
+        L'idée est de split le layer LSTM en un pour le sens normal du temps et l'autre
+        pour le sens inverse, 1 2 3 4 et 4 3 2 1, de cette façon on peut obtenir de
+        meilleures performances dans certains cas, ça a notamment montrer de très bon 
+        résultats pour le machine translation
 
-- Comment entrainer un LSTM ?
+    
+    
+
+
+
+- Comment entrainer un LSTM ? 
     Forward and Backpropagation, seulement il y a 2 types de BP
     - Back Propagation Through Time, il sagit pour chaque
     etape de temps, de passer tous la sequence d'input dans le réseau
