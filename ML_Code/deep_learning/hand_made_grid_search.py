@@ -8,6 +8,7 @@ from keras.layers import Dense
 from keras.utils.np_utils import to_categorical
 from matplotlib import pyplot
 from pandas import DataFrame
+import time
 
 # crée un dataset
 seed(1)
@@ -30,29 +31,44 @@ test_x,test_y = array([x[0] for x in test]),array([x[1] for x in test])
 train_y = to_categorical(train_y)
 test_y = to_categorical(test_y)
 
-def fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init):
+def fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init,
+                n_layers,n_cells):
     model = Sequential()
-    model.add(Dense(10,input_dim=1,kernel_initializer=init))
+    model.add(Dense(n_cells,input_dim=1,kernel_initializer=init,activation='relu'))
+    for n in range(n_layers-1):
+        model.add(Dense(n_cells, kernel_initializer=init,activation='relu'))
     model.add(Dense(n_class,activation='sigmoid'))
     model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accuracy'])
     model.fit(train_x,train_y,verbose=0,epochs=epoch,batch_size=1)
     return model.evaluate(test_x,test_y,verbose=0)[1]
 
+# On paramètre tout ici :)
 initializers = ['glorot_normal','glorot_uniform','random_uniform','random_normal']
-epochs = [1,2,3] 
-n_repeats = 5
+#activation = ['...','',]
+#final activation = ['...','',]
+epochs = [1,2,3]
+n_layers = [1,2,3]
+n_cells = [10,30,60]
+
+n_repeats = 3
 scores = DataFrame()
 for epoch in epochs:
     print 'epoch : %d'%(epoch)
     for init in initializers:
-        print 'init : %s'%(init)
-        perf_v = list()
-        for i in range(n_repeats):
-            perf = fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init)
-            perf_v.append(perf)
-        scores[str(epoch),init] = perf_v
+        print ' init : %s'%(init)
+        for n_l in n_layers:
+            print '  n_layers : %d'%(n_l)
+            #for n_c in n_cells:
+            start_time = time.time()
+            perf_v = list()
+            for i in range(n_repeats):
+                perf = fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init,n_l,10)
+                perf_v.append(perf)
+            scores[str(epoch),str(n_layers),init] = perf_v
+            print '   n_cells : %d - %f'%(10,time.time() - start_time)
 
 print(scores.describe())
+print scores.mean().sort_values(ascending=False)
 
 perf = 'accu' #/loss/others metrics
 scores.boxplot()
