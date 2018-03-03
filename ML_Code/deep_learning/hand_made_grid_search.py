@@ -39,7 +39,7 @@ def fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init):
     return model.evaluate(test_x,test_y,verbose=0)[1]
 
 initializers = ['glorot_normal','glorot_uniform','random_uniform','random_normal']
-epochs = [1,2,3]
+epochs = [1,2,3] 
 n_repeats = 5
 scores = DataFrame()
 for epoch in epochs:
