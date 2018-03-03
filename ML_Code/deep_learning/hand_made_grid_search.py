@@ -39,40 +39,49 @@ def fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init,
         model.add(Dense(n_cells, kernel_initializer=init,activation='relu'))
     model.add(Dense(n_class,activation='sigmoid'))
     model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accuracy'])
+    start_time = time.time()
     model.fit(train_x,train_y,verbose=0,epochs=epoch,batch_size=1)
-    return model.evaluate(test_x,test_y,verbose=0)[1]
+    print  '   time  :%f' % (time.time() - start_time)
+    loss = model.evaluate(test_x,test_y,verbose=0)[1]
+    del model
+    return loss
 
 # On paramètre tout ici :)
-initializers = ['glorot_normal','glorot_uniform','random_uniform','random_normal']
+
+# semblerait que le problème viennent des initializers, tester avec les activation funcions
+initializers = ['random_normal','glorot_normal','glorot_uniform','random_uniform']
 #activation = ['...','',]
 #final activation = ['...','',]
-epochs = [1,2,3]
-n_layers = [1,2,3]
-n_cells = [10,30,60]
+epochs = [1,1,1,1,1]
+n_layers = [1,1,1,1,1]
+n_cells = [10,10,10]
 
-n_repeats = 3
+n_repeats = 1
 scores = DataFrame()
+epoch = 1
+init = 'glorot_normal'
+n_c = 10
 for epoch in epochs:
     print 'epoch : %d'%(epoch)
-    for init in initializers:
-        print ' init : %s'%(init)
-        for n_l in n_layers:
-            print '  n_layers : %d'%(n_l)
-            #for n_c in n_cells:
-            start_time = time.time()
-            perf_v = list()
-            for i in range(n_repeats):
-                perf = fit_model(train_x,train_y,test_x,test_y,n_class,epoch,init,n_l,10)
-                perf_v.append(perf)
-            scores[str(epoch),str(n_layers),init] = perf_v
-            print '   n_cells : %d - %f'%(10,time.time() - start_time)
+#for init in initializers:
+ #   print ' init : %s' % (init)
+    for n_l in n_layers:
+        print '  n_layers : %d' % (n_l)
+        #for n_c in n_cells:
+        perf_v = list()
+        for i in range(n_repeats):
+            perf = fit_model(train_x, train_y, test_x,
+                                test_y, n_class, epoch, init, n_l, n_c)
+            perf_v.append(perf)
+        scores[str(epoch), init,str(n_layers),str(n_cells)] = perf_v
+        print '   n_cells : %d - ' % (n_c)
 
 print(scores.describe())
 print scores.mean().sort_values(ascending=False)
 
 perf = 'accu' #/loss/others metrics
 scores.boxplot()
-pyplot.ylabel(perf)
-pyplot.xlabel('epochs')
-pyplot.show()
+#pyplot.ylabel(perf)
+#pyplot.xlabel('epochs')
+#pyplot.show()
 
