@@ -79,11 +79,13 @@
         pour le sens inverse, 1 2 3 4 et 4 3 2 1, de cette façon on peut obtenir de
         meilleures performances dans certains cas, ça a notamment montrer de très bon 
         résultats pour le machine translation
-
-    
-    
-
-
+    - Generative LSTM : 
+        L'idée est d'utiliser un Vanilla LSTM ou autre, la vraie différence est que
+        nous allons entrainer le model, puis demander une prédiction, et utiliser
+        cette même prédiction comme futur input du LSTM, on boucle ça n fois,
+        et obtient une génération du LSTM. Note qu'il est difficile d'évaluer
+        les prédictions de ce model, il faut soit même créer un test qualitatif 
+        adapté pour obtenir une accuracy
 
 - Comment entrainer un LSTM ? 
     Forward and Backpropagation, seulement il y a 2 types de BP
@@ -97,3 +99,16 @@
     qui va servir a obtenir l'output, puis on déroule le réseau, sauf que on
     choisi le nombre d'étape de temps qui vont servir a calculer et 
     accumuler les erreurs
+
+- Comment tuner un LSTM ?
+    Utiliser le grid search, voir deep_learning/grid_search.py
+    Deuxièmement essayer de faire des régularisation : 
+        - Dropout sur neurones
+        - Regularizer sur weights
+        - Nombres d’hiddens Layers
+        - Nombres de cells dans chaque layer
+        - Weight Initialization
+        - Activation Function
+        - Optimization Algorithm
+        - Learning Rate
+        - Batch Size (1,32,n)
