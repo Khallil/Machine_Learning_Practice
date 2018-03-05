@@ -81,7 +81,3 @@ print scores.mean().sort_values(ascending=False)
 
 perf = 'accu' #/loss/others metrics
 scores.boxplot()
-#pyplot.ylabel(perf)
-#pyplot.xlabel('epochs')
-#pyplot.show()
-
