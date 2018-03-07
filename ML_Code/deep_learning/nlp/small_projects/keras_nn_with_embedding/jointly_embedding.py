@@ -5,6 +5,7 @@ from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers.embeddings import Embedding
 import numpy as np
+
 # define documents
 docs = ['Well done!',
 		'Good work',
