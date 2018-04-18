@@ -20,7 +20,7 @@ X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
 # create the model
 embedding_vecor_length = 32
 model = Sequential()
-model.add(Embedding(top_words, embedding_vecor_length, input_length=max_review_length))
+model.add(Embedding(top_words, 100, input_length=max_review_length))
 model.add(Conv1D(filters=32, kernel_size=3, padding='same', activation='relu'))
 model.add(MaxPooling1D(pool_size=2))
 model.add(LSTM(100))
