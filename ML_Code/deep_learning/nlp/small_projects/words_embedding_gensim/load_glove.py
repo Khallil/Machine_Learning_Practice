@@ -26,14 +26,21 @@ print translator.translate("J'aime l'écologie", dest='en').text
 
 # result = mauvais -> donc pollution est mauvais pour ecologie
 # bon + (pollution - ecologie) = mauvais
-x_word = "bad"
-result = model.most_similar(positive=['pollution',x_word], negative=['ecology'], topn=3)
+x_word = "king"
+result = model.most_similar(positive=['woman','king'], negative=['man'], topn=3)
 print_result(result,x_word)
 # result = mauvais -> donc pollution est mauvais pour ecologie
+x_word = "negative"
+result = model.most_similar(positive=['ecology',x_word], negative=['pollution'], topn=3)
+print_result(result,x_word)
+
+x_word = "positive"
+result = model.most_similar(positive=['ecology',x_word], negative=['pollution'], topn=3)
+print_result(result,x_word)
 
 # si un des deux possède bad ou good dans leur liste alors on assigne positif ou negatif
 # a celui trouvé comme étant bad ou good
-print("Oxygen result : ")
+'''print("Oxygen result : ")
 x_word = "good"
 result = model.most_similar(positive=['oxygen',x_word], negative=['ecology'], topn=3)
 print_result(result,x_word)
@@ -43,3 +50,4 @@ x_word = "bad"
 result = model.most_similar(positive=['oxygen',x_word], negative=['ecology'], topn=3)
 print_result(result,x_word)
 print("--- %s seconds ---" % (time.time() - start_time))
+'''
