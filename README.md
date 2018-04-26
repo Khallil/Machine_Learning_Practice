@@ -8,7 +8,10 @@ ML CODE –
 	- Linear Algorithms
 	- Ensemble Algorithms
 - Deep Learning
-	- Deep Learning
+	- Framework_Pratice
+		- Tensorflow
+		- Keras
+		- Pytorch
 	- Projects
 		- Multilayer Perceptron
 		- CNN
