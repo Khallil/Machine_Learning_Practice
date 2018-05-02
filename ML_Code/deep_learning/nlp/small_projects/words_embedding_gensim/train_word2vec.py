@@ -6,10 +6,10 @@ from matplotlib import pyplot
 # Visualize in 2D the embedding
 
 # define training data
-sentences = [['this', 'is', 'the', 'first', 'sentence', 'for', 'word2vec'],
+sentences = [['yet', 'another', 'sentence'],
 			['this', 'is', 'the', 'second', 'sentence'],
-			['yet', 'another', 'sentence'],
-			['one', 'more', 'sentence'],
+			['this', 'is', 'the', 'first', 'sentence', 'for', 'word2vec'],
+			['one', 'more', 'sentence'],			
 			['and', 'the', 'final', 'sentence']]
 # train model
 model = Word2Vec(sentences, min_count=1,workers=8)
