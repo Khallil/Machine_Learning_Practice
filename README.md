@@ -1,5 +1,5 @@
 # Machine Learning Repo
-All my documents/codes/spreadsheets/e-books for ML
+All my documents/codes/spreadsheets/e-books for ML Learning
 
 ML CODE – 
 - Basic tools
@@ -37,3 +37,4 @@ ML Knownledges -
 	- Deep Learning
 		- Concepts Descriptions
 - ML Unsupervised Learning
+- NLP
